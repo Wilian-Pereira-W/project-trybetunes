@@ -40,7 +40,7 @@ class MusicCard extends React.Component {
       trackId,
     } } = this.props;
     return (
-      <div data-testid="page-album">
+      <div>
         { activateLoading ? <Loading /> : (
           <section>
             <p>{trackName}</p>
