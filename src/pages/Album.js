@@ -37,9 +37,9 @@ class Album extends React.Component {
         <Header />
         <p data-testid="artist-name">{nomeArtista}</p>
         <p data-testid="album-name">{nomeAlbum}</p>
-        {albums.slice(1).map((musica) => (
+        {albums.slice(1).map((musica, index) => (
           <MusicCard
-            key={ musica.collectionId }
+            key={ index }
             albums={ musica }
           />))}
         ;
