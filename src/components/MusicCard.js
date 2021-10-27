@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from '../pages/Loading';
 
 class MusicCard extends React.Component {
@@ -11,6 +11,10 @@ class MusicCard extends React.Component {
       checked: false,
     };
     this.onInputChange = this.onInputChange.bind(this);
+  }
+
+  componentDidMount() {
+    this.recuperMusicaFavorita();
   }
 
   onInputChange({ target }) {
@@ -30,6 +34,10 @@ class MusicCard extends React.Component {
     this.setState({
       activateLoading: false,
     });
+  }
+
+  async recuperMusicaFavorita() {
+    await getFavoriteSongs();
   }
 
   render() {
@@ -54,6 +62,7 @@ class MusicCard extends React.Component {
               Favorita
               <input
                 type="checkbox"
+                id={ trackId }
                 data-testid={ `checkbox-music-${trackId}` }
                 onClick={ this.onInputChange }
                 checked={ checked }
